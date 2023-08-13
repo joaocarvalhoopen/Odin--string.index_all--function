@@ -37,7 +37,7 @@ Odin ols plugin in your preferred text editor:
 ## Links
 - [The Odin site - http://odin-lang.org/][http://odin-lang.org/]
 - [Odin documentation - http://odin-lang.org/docs/][http://odin-lang.org/docs/]
-- [Odin demo code file - https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin][https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin]
+- [Odin demo code file][https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin]
 
 ## Best regards
 João Carvalho
