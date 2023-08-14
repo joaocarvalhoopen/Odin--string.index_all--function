@@ -35,37 +35,37 @@ import "core:strings"
 // and it is an extension to the string procedures.
 index_all :: proc( string_target: string, sub_str: string, case_sensitive: bool = true) -> (res : [dynamic]int ) {  
     len_s_tmp       := len( string_target )
-	len_sub_str_tmp := len( sub_str )  
+    len_sub_str_tmp := len( sub_str )  
     if len_s_tmp == 0 || len_sub_str_tmp == 0  {
         return res
     }
     s_tmp       := string_target
-	sub_str_tmp := sub_str 
-	if !case_sensitive {
-		s_tmp       = strings.to_lower( string_target )
-		sub_str_tmp = strings.to_lower( sub_str )
+    sub_str_tmp := sub_str 
+    if !case_sensitive {
+        s_tmp       = strings.to_lower( string_target )
+        sub_str_tmp = strings.to_lower( sub_str )
         defer delete( s_tmp )
         defer delete( sub_str_tmp )
-	}
-	slice := s_tmp[ : ]
-	// res_tmp : [dynamic]Ocurencies = nil
-	accu_index_start := 0
-	for { 
+    }
+    slice := s_tmp[ : ]
+    // res_tmp : [dynamic]Ocurencies = nil
+    accu_index_start := 0
+    for { 
         i := strings.index( slice, sub_str_tmp )
         if i < 0 {
             return res
         }
-		accu_index_start += i
-		accu_index_end := accu_index_start + len_sub_str_tmp  
-		// We only create the vector if we have result to return.
+        accu_index_start += i
+        accu_index_end := accu_index_start + len_sub_str_tmp  
+        // We only create the vector if we have result to return.
         if res == nil do res = make([dynamic]int, 0, 7)
 
         append( &res, accu_index_start )
-		// Prepare slice for next iteration.
-		slice = s_tmp[ accu_index_end : ]
+        // Prepare slice for next iteration.
+        slice = s_tmp[ accu_index_end : ]
         // Update the accu_index_start for the next iteration.
         accu_index_start = accu_index_end 
-	}
+    }
 }
 
 
@@ -79,19 +79,19 @@ TestOutcomes :: enum {
 
 // The test__index_all() function is a helper function to test the index_all() function.
 test__index_all :: proc (test_description: string, string_target: string,
-                       sub_str: string, case_sensitive: bool, testOutcome: TestOutcomes ) {
+                        sub_str: string, case_sensitive: bool, testOutcome: TestOutcomes ) {
     fmt.printf("\n%v\n", test_description )
     actual_outcome : TestOutcomes;
     index_vec: = index_all( string_target, sub_str, case_sensitive )
     if len( index_vec ) == 0 {
-    	fmt.printf("word: \"%v\" - No index found.\n", sub_str)
+        fmt.printf("word: \"%v\" - No index found.\n", sub_str)
         actual_outcome = TestOutcomes.Fail
     } else {
         len_sub_str := len( sub_str )
         for word_index_start in index_vec {
             fmt.printf(" word: \"%v\" start: %v end: %v\n", sub_str, word_index_start, word_index_start + len_sub_str )
         }
-    
+
         delete(index_vec)
         actual_outcome = TestOutcomes.Success
     }
@@ -168,3 +168,4 @@ main :: proc ()  {
 
     fmt.println("\n\n ...end of tests.\n")
 }
+
