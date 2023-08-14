@@ -126,7 +126,7 @@ test_all__index_all :: proc () {
 
 
     // Test 0
-    test_description = "Test 0 - Search the string \"0120120123456789\" for the \"012\" sub-string case-sensitive = true."
+    test_description = `Test 0 - Search the string "0120120123456789" for the "012" sub-string case-sensitive = true.`
     string_target    = "0120120123456789"
     sub_str          = "012" 
     case_sensitive   = true
@@ -134,7 +134,7 @@ test_all__index_all :: proc () {
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 1
-    test_description = "Test 1 - Search the string \"012F012FF012FF3456789FF012\" for the \"012\" sub-string case-sensitive = true."
+    test_description = `Test 1 - Search the string "012F012FF012FF3456789FF012" for the "012" sub-string case-sensitive = true.`
     string_target    = "012F012FF012FF3456789FF012"
     sub_str          = "012" 
     case_sensitive   = true
@@ -142,7 +142,7 @@ test_all__index_all :: proc () {
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 2
-    test_description = "Test 2 - Search the string \"Hello, Hello, Hello!\" for the \"Hello\" sub-string case-sensitive = true."
+    test_description = `Test 2 - Search the string "Hello, Hello, Hello!" for the "Hello" sub-string case-sensitive = true.`
     string_target    = "Hello, Hello, Hello!"
     sub_str          = "Hello" 
     case_sensitive   = true
@@ -150,39 +150,39 @@ test_all__index_all :: proc () {
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 3
-    test_description = "Test 3 - Search the string \"Hello, Hello, Hello!\" for the \"heLLo\" sub-string case-sensitive = false."
-    string_target   = "Hello, Hello, Hello!"
-    sub_str         = "heLLo" 
-    case_sensitive  = false
+    test_description = `Test 3 - Search the string "Hello, Hello, Hello!" for the "heLLo" sub-string case-sensitive = false.`
+    string_target    = "Hello, Hello, Hello!"
+    sub_str          = "heLLo" 
+    case_sensitive   = false
     expected_test_result = TestOutcomes.Success
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 4
-    test_description = "Test 4 - Search the string \"Hello, Hello, Hello!\" for the \"bla\" sub-string."
-    string_target   = "Hello, Hello, Hello!"
-    sub_str         = "bla" 
-    case_sensitive  = true
+    test_description = `Test 4 - Search the string "Hello, Hello, Hello!" for the "bla" sub-string.`
+    string_target    = "Hello, Hello, Hello!"
+    sub_str          = "bla" 
+    case_sensitive   = true
     expected_test_result = TestOutcomes.Fail
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 5
-    test_description = "Test 5 - Search the string \"Hello, Hello, Hello!\" for the empty sub-string."
-    string_target   = "Hello, Hello, Hello!"
-    sub_str         = "" 
-    case_sensitive  = false
+    test_description = `Test 5 - Search the string "Hello, Hello, Hello!" for the empty sub-string.`
+    string_target    = "Hello, Hello, Hello!"
+    sub_str          = "" 
+    case_sensitive   = false
     expected_test_result = TestOutcomes.Fail
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 6
     test_description = "Test 6 - Search on a empty string with a empty sub-string."
-    string_target   = ""
-    sub_str         = "" 
-    case_sensitive  = true
+    string_target    = ""
+    sub_str          = "" 
+    case_sensitive   = true
     expected_test_result = TestOutcomes.Fail
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
     // Test 7
-    test_description = "Test 7 - Search on a empty string with a \"bla\" sub-string."
+    test_description = `Test 7 - Search on a empty string with a "bla" sub-string.`
     string_target   = ""
     sub_str         = "bla" 
     case_sensitive  = true
