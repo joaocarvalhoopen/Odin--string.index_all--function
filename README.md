@@ -40,7 +40,7 @@ Odin ols plugin in your preferred text editor:
 - [Odin demo code file - https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin](https://github.com/odin-lang/Odin/blob/master/examples/demo/demo.odin)
 - [Odin examples - https://github.com/odin-lang/examples](https://github.com/odin-lang/examples)
 - [Video - Odin - ThePrimoGen gingerBill Interview - https://www.youtube.com/watch?v=nVa9mgRcVPs](https://www.youtube.com/watch?v=nVa9mgRcVPs)
-- [Video - Odin - Context Free - Interview with Odin language creator gingerBill - https://www.youtube.com/watch?v=nVa9mgRcVPs](https://www.youtube.com/watch?v=nVa9mgRcVPs)
+- [Video - Odin - Context Free - Interview with Odin language creator gingerBill - https://www.youtube.com/watch?v=2YLA4ajby00](https://www.youtube.com/watch?v=2YLA4ajby00)
 
 ## Have fun - best regards
 João Carvalho
