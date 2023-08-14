@@ -59,9 +59,17 @@ index_all :: proc ( string_target: string, sub_str: string, case_sensitive: bool
         accu_index_end := accu_index_start + len_sub_str_tmp  
         // We only reserve space for the elements for the vector if we have
         // result to return.
-        // If it has no elments it has only the stacks structure part of the
-        // vector allocated on the stack, and that as sintatic sugar to compare
-        // with nil has true. Like res == nil .
+        // If it has no elments (zero elements) it has only the stacks structure
+        // part of the vector allocated on the stack, and that as sintatic sugar
+        // to compare with nil has true. Like res == nil .
+        // Have in mind that append would automatically allocate space for the
+        // elements of the vector if it has no space allocated. So technically
+        // we don't need to allocate space for the elements of the vector with
+        // make. But in this way we can control the space allocated for the
+        // reserved capacity of the vector. Until it has to grow the vector
+        // for lack of space, allocate another array of 2N elements and copy
+        // the elements from the old array to the new array, and then delete
+        // the old array. This is the way the append() function works.
         if res == nil do res = make([dynamic]int, 0, 7)
 
         append( &res, accu_index_start )
