@@ -62,7 +62,7 @@ index_all :: proc( string_target: string, sub_str: string, case_sensitive: bool 
 
         append( &res, accu_index_start )
         // Prepare slice for next iteration.
-        slice = s_tmp[ accu_index_end : ]
+        slice = s_tmp[ accu_index_end: ]
         // Update the accu_index_start for the next iteration.
         accu_index_start = accu_index_end 
     }
@@ -112,7 +112,25 @@ test_all__index_all :: proc () {
     case_sensitive       : bool
     expected_test_result : TestOutcomes
 
+
+    // Test 0
+    test_description = "Test 0 - Search the string \"0120120123456789\" for the \"012\" sub-string case-sensitive = true."
+    string_target    = "0120120123456789"
+    sub_str          = "012" 
+    case_sensitive   = true
+    expected_test_result = TestOutcomes.Success
+    test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
+
     // Test 1
+    test_description = "Test 1 - Search the string \"012F012FF012FF3456789FF012\" for the \"012\" sub-string case-sensitive = true."
+    string_target    = "012F012FF012FF3456789FF012"
+    sub_str          = "012" 
+    case_sensitive   = true
+    expected_test_result = TestOutcomes.Success
+    test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
+
+
+    // Test 2
     test_description = "Test 1 - Search the string \"Hello, Hello, Hello!\" for the \"Hello\" sub-string case-sensitive = true."
     string_target    = "Hello, Hello, Hello!"
     sub_str          = "Hello" 
@@ -120,7 +138,7 @@ test_all__index_all :: proc () {
     expected_test_result = TestOutcomes.Success
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
-    // Test 2
+    // Test 3
     test_description = "Test 2 - Search the string \"Hello, Hello, Hello!\" for the \"heLLo\" sub-string case-sensitive = false."
     string_target   = "Hello, Hello, Hello!"
     sub_str         = "heLLo" 
@@ -128,7 +146,7 @@ test_all__index_all :: proc () {
     expected_test_result = TestOutcomes.Success
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
-    // Test 3
+    // Test 4
     test_description = "Test 3 - Search the string \"Hello, Hello, Hello!\" for the \"bla\" sub-string."
     string_target   = "Hello, Hello, Hello!"
     sub_str         = "bla" 
@@ -136,7 +154,7 @@ test_all__index_all :: proc () {
     expected_test_result = TestOutcomes.Fail
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
-    // Test 4
+    // Test 5
     test_description = "Test 4 - Search the string \"Hello, Hello, Hello!\" for the empty sub-string."
     string_target   = "Hello, Hello, Hello!"
     sub_str         = "" 
@@ -144,7 +162,7 @@ test_all__index_all :: proc () {
     expected_test_result = TestOutcomes.Fail
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
-    // Test 5
+    // Test 6
     test_description = "Test 5 - Search on a empty string with a empty sub-string."
     string_target   = ""
     sub_str         = "" 
@@ -152,7 +170,7 @@ test_all__index_all :: proc () {
     expected_test_result = TestOutcomes.Fail
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
 
-    // Test 6
+    // Test 7
     test_description = "Test 6 - Search on a empty string with a \"bla\" sub-string."
     string_target   = ""
     sub_str         = "bla" 
