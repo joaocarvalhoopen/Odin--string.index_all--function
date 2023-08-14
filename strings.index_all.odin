@@ -33,7 +33,7 @@ import "core:strings"
 
 // index_all() seach for all ocurrencies indexes of a subsstring inside a string
 // and it is an extension to the string procedures.
-index_all :: proc( string_target: string, sub_str: string, case_sensitive: bool = true) -> (res : [dynamic]int ) {  
+index_all :: proc ( string_target: string, sub_str: string, case_sensitive: bool = true) -> (res : [dynamic]int ) {  
     len_s_tmp       := len( string_target )
     len_sub_str_tmp := len( sub_str )  
     if len_s_tmp == 0 || len_sub_str_tmp == 0  {
@@ -57,7 +57,11 @@ index_all :: proc( string_target: string, sub_str: string, case_sensitive: bool 
         }
         accu_index_start += i
         accu_index_end := accu_index_start + len_sub_str_tmp  
-        // We only create the vector if we have result to return.
+        // We only reserve space for the elements for the vector if we have
+        // result to return.
+        // If it has no elments it has only the stacks structure part of the
+        // vector allocated on the stack, and that as sintatic sugar to compare
+        // with nil has true. Like res == nil .
         if res == nil do res = make([dynamic]int, 0, 7)
 
         append( &res, accu_index_start )
@@ -128,7 +132,6 @@ test_all__index_all :: proc () {
     case_sensitive   = true
     expected_test_result = TestOutcomes.Success
     test__index_all( test_description, string_target, sub_str, case_sensitive, expected_test_result )
-
 
     // Test 2
     test_description = "Test 2 - Search the string \"Hello, Hello, Hello!\" for the \"Hello\" sub-string case-sensitive = true."
